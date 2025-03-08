@@ -1,6 +1,6 @@
 import './App.css'
 import SlowComponent from './component/SlowComp'
-import React, { memo, useMemo, useState } from 'react'
+import React, { memo, useMemo, useState, useCallback } from 'react'
 import Moadal from './component/Modal';
 import SlowComponentTwo from './component/AnotherSlowComp';
 
@@ -17,13 +17,11 @@ function App() {
 
   const [x, setX] = useState(0);
   
-  // const someFun = useCallback(() => {console.log("Callback function executed!");}, []);
+  const someFun = useCallback(() => {console.log("Callback function executed!");}, []);
 
-  // const timeArray = useMemo(() => {return [1000];},[]);
+  const timeArray = useMemo(() => {return [1000];},[]);
 
-  // const MemoChild = memo(() => {
-  //   return <div> i im a child</div>
-  // })
+
 
   const MemoChild = useMemo(() => {
     return (
@@ -47,7 +45,7 @@ function App() {
           something...
         </div>
 
-        {/* <MemoizedSlowComp time={timeArray} fun={someFun} x={x} /> */}
+        <MemoizedSlowComp time={timeArray} fun={someFun} x={x} />
         <MemoizedSlowCompTwo>
           { MemoChild }
         </MemoizedSlowCompTwo>
