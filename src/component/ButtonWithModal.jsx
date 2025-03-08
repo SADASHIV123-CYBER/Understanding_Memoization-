@@ -1,5 +1,5 @@
 import Moadal from "./Modal";
-import useModalDialog from "./hooks/useModalDialog";
+import useModalDialog from "../hooks/useModalDialog";
 
 function ButtonWithModal() {
     const {isOpen, open, close} = useModalDialog();

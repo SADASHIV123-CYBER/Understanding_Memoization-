@@ -1,8 +1,8 @@
 import './App.css'
-import SlowComponent from './SlowComp'
+import SlowComponent from './component/SlowComp'
 import React, { memo, useMemo, useState } from 'react'
-import Moadal from './Modal';
-import SlowComponentTwo from './AnotherSlowComp';
+import Moadal from './component/Modal';
+import SlowComponentTwo from './component/AnotherSlowComp';
 
 const MemoizedSlowComp = memo(function MemoizedSlowComp({ time, fun, x }) {
   return(<>
