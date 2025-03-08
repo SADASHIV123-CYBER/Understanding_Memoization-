@@ -1,24 +1,36 @@
 import './App.css'
 import SlowComponent from './SlowComp'
-import React, { memo, useCallback, useMemo, useState } from 'react'
+import React, { memo, useMemo, useState } from 'react'
 import Moadal from './Modal';
+import SlowComponentTwo from './AnotherSlowComp';
 
 const MemoizedSlowComp = memo(function MemoizedSlowComp({ time, fun, x }) {
   return(<>
     <SlowComponent time={time} fun={fun} x={x} />
   </>)
 })
+
+const MemoizedSlowCompTwo = memo(SlowComponentTwo);
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [x, setX] = useState(0);
   
-  const someFun = useCallback(() => {
-    console.log("Callback function executed!");
-  }, []);
+  // const someFun = useCallback(() => {console.log("Callback function executed!");}, []);
 
-  const timeArray = useMemo(() => {
-    return [1000];
+  // const timeArray = useMemo(() => {return [1000];},[]);
+
+  // const MemoChild = memo(() => {
+  //   return <div> i im a child</div>
+  // })
+
+  const MemoChild = useMemo(() => {
+    return (
+      <>
+        <h2> i im a child</h2>
+      </>
+    )
   },[])
 
   return (
@@ -35,7 +47,10 @@ function App() {
           something...
         </div>
 
-        <MemoizedSlowComp time={timeArray} fun={someFun} x={x} />
+        {/* <MemoizedSlowComp time={timeArray} fun={someFun} x={x} /> */}
+        <MemoizedSlowCompTwo>
+          { MemoChild }
+        </MemoizedSlowCompTwo>
       </>
   )
 }
